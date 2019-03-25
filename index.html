@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <title>Beacon</title>
+  </head>
+  <body>
+
+    <div class="topnav">
+      <a href="index.html" class="top">Home</a>
+      <a href="flood.html" class="top">Flood</a>
+      <a href="flood.html" class="top">Fire</a>
+      <a href="earthquake.html" class="top">Earthquake</a>
+      <a href="about.html" class="top">About</a>
+
+    </div>
+    <div id="map">
+    </div>
+    <!-- creating a map -->
+    <script>
+
+    function initMap() {
+      var myLatLng = {lat: 40.7128, lng: 74.0060};
+
+      var beaconsMap = new google.maps.Map(document.getElementById('map'), {
+        zoom: 10,
+        center: myLatLng
+      });
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+          initialLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+          beaconsMap.setCenter(initialLocation);
+        });
+      }
+      var marker;
+
+      google.maps.event.addListener(beaconsMap, 'click', function(event) {
+
+        placeMarker(event.latLng);
+
+      });
+
+      function placeMarker(location) {
+
+          marker = new google.maps.Marker({
+            position: location,
+            map: beaconsMap,
+            icon: {
+              url: "http://maps.google.com/mapfiles/ms/icons/yellow-dot.png"
+              }
+
+          }); }
+        }
+      </script>
+      <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDEGT_AaHzBL33Jle1igZbx91tie25fl8w&callback=initMap">
+    </script>
+
+
+  </body>
+
+  <h1 class="titles">How to use Beacon</h1>
+  <p class="indexdetails">Click on your location to place a beacon. Each yellow beacon represents a safe location. We utilize crowdsourcing techniques in order for it to make it possible for anyone, anywhere to offer a safe location for someone to say. We hoped that these locations can be consolidated on one map, hence the idea for Beacon originated.</p>
+<div class="icons">
+<img src="pindrop.png">
+<img src="tree2.png">
+<img src="house3.png">
+</div>
+<p class="indexdetailss"> We focus on helping people avoid natural disasters that might occur in their areas. Our primary effort is focusing on saving people and providing resources for those in need. We have provided an opportunity for others to offer their homes and locations for others. </p>
+
+</p>
+  <iframe src="https://www.youtube.com/embed/WuOcyM3KYrA"
+     width="560" height="315" frameborder="0" padding-left:"10px" allowfullscreen></iframe>
+<p class="moreinfo">12,000-14,000</p>
+<p class="lessinfo">Amount of earthquakes per year, A fire department in the US responds to a fire,Spent on natural disasters in 2017</p>
+<p class="moreinfo">EVERY 24 SECONDS</p>
+<p class="less info"> </p>
+
+<p class="moreinfo">$78 BILLION, 24 Seconds </p>
+
+
+<p class="lessinfo"></p>
+</html>
